@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>{{EMAIL_SUBJECT}}</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Outfit:wght@300;400;500;600;700&display=swap");
+
+    body,
+    table,
+    td,
+    a {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+
+    table,
+    td {
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+
+    img {
+      -ms-interpolation-mode: bicubic;
+      border: 0;
+      outline: none;
+      text-decoration: none;
+    }
+
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+    }
+
+    /* ── Fallback fonts for email clients that block Google Fonts ── */
+    .font-display {
+      font-family: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    }
+
+    .font-body {
+      font-family: "Outfit", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    @media screen and (max-width: 600px) {
+      .email-container {
+        width: 100% !important;
+      }
+
+      .header-headline {
+        font-size: 24px !important;
+      }
+
+      .product-name {
+        font-size: 22px !important;
+      }
+
+      .price-current {
+        font-size: 26px !important;
+      }
+
+      .cta-btn {
+        padding: 15px 32px !important;
+        font-size: 13px !important;
+      }
+
+      .body-pad {
+        padding: 24px 24px !important;
+      }
+
+      .header-pad {
+        padding: 28px 24px 24px !important;
+      }
+    }
+  </style>
+</head>
+
+<body style="margin: 0; padding: 0; background-color: #03200f">
+  <!--
+    OUTER WRAPPER — background image set via HTML 'background' attribute
+    (the only way email clients render background images reliably)
+  -->
+  <!--[if gte mso 9
+      ]><v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t"
+        ><v:fill
+          type="frame"
+          src="{{EMAIL_BG_IMAGE_URL}}"
+          color="#03200f" /></v:background
+    ><![endif]-->
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+    style="background-color:#03200f;background-image:url('{{EMAIL_BG_IMAGE_URL}}');background-size:cover;background-position:center top;background-repeat:no-repeat;">
+    <tr>
+      <td align="center" style="padding: 48px 16px">
+        <!-- CARD -->
+        <table role="presentation" class="email-container" width="580" cellpadding="0" cellspacing="0" border="0" style="
+              max-width: 580px;
+              width: 100%;
+              background-color: #071f10;
+              border-radius: 20px;
+              overflow: hidden;
+              border: 1px solid #0f3d22;
+              box-shadow: 0 32px 80px rgba(0, 0, 0, 0.7);
+            ">
+          <!-- ── HEADER ── -->
+          <tr>
+            <td class="header-pad" align="left" style="
+                  background-color: #07422c;
+                  background-image: linear-gradient(
+                    145deg,
+                    #07422c 0%,
+                    #04291a 60%,
+                    #041a0f 100%
+                  );
+                  padding: 36px 40px 30px;
+                  border-bottom: 1px solid #0d5232;
+                ">
+              <!-- Brand tag -->
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="
+                        background-color: #0a3d20;
+                        border: 1px solid #1a7a42;
+                        border-radius: 40px;
+                        padding: 5px 14px;
+                      ">
+                    <span style="
+                          font-family:
+                            &quot;Outfit&quot;, &quot;Helvetica Neue&quot;,
+                            Arial, sans-serif;
+                          font-size: 10px;
+                          font-weight: 600;
+                          letter-spacing: 4px;
+                          text-transform: uppercase;
+                          color: #6ee7b7;
+                        ">
+                      ● {{STORE_NAME}}
+                    </span>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Headline -->
+              <h1 class="header-headline font-display" style="
+                    font-family:
+                      &quot;Cormorant Garamond&quot;, Georgia,
+                      &quot;Times New Roman&quot;, serif;
+                    font-size: 30px;
+                    font-weight: 700;
+                    font-style: italic;
+                    color: #f0faf4;
+                    line-height: 1.15;
+                    margin: 18px 0 8px;
+                    letter-spacing: -0.3px;
+                  ">
+                {{EMAIL_HEADLINE}}
+              </h1>
+
+              <!-- Subline -->
+              <p style="
+                    font-family:
+                      &quot;Outfit&quot;, &quot;Helvetica Neue&quot;, Arial,
+                      sans-serif;
+                    font-size: 14px;
+                    color: #5a9e78;
+                    margin: 0;
+                    font-weight: 300;
+                  ">
+                {{EMAIL_SUBLINE}}
+              </p>
+            </td>
+          </tr>
+
+          <!-- ── PRODUCT IMAGE ── -->
+          <tr>
+            <td style="padding: 0; line-height: 0; font-size: 0">
+              {{#if PRODUCT_IMAGE}}
+              <img src="{{PRODUCT_IMAGE}}" alt="{{PRODUCT_NAME}}" width="580" style="
+                    width: 100%;
+                    max-width: 580px;
+                    height: 280px;
+                    object-fit: cover;
+                    display: block;
+                  " />
+              {{else}}
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="center" style="
+                        background-color: #07422c;
+                        height: 180px;
+                        font-size: 64px;
+                        line-height: 1;
+                      ">
+                    🛍️
+                  </td>
+                </tr>
+              </table>
+              {{/if}}
+
+              <!-- Badges row (below image, not overlaid — email-safe) -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                style="background-color: #071a0e">
+                <tr>
+                  <td style="padding: 14px 20px;">
+                    {{BADGE_SALE}} {{BADGE_NEW}} {{BADGE_DISCOUNT}}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- ── PRODUCT BODY ── -->
+          <tr>
+            <td class="body-pad" style="background-color: #071a0e; padding: 28px 40px 36px">
+              <!-- Category -->
+              <p style="
+                    font-family:
+                      &quot;Outfit&quot;, &quot;Helvetica Neue&quot;, Arial,
+                      sans-serif;
+                    font-size: 14px;
+                    font-weight: 600;
+                    letter-spacing: 3.5px;
+                    text-transform: uppercase;
+                    color: #34d399;
+                    margin: 0 0 8px;
+                  ">
+                {{PRODUCT_CATEGORY}}
+              </p>
+
+              <!-- Product name -->
+              <h2 class="product-name font-display" style="
+                    font-family: &quot;Cormorant Garamond&quot;, Georgia, serif;
+                    font-size: 28px;
+                    font-weight: 700;
+                    color: #ecfdf5;
+                    margin: 0 0 10px;
+                    line-height: 1.15;
+                  ">
+                {{PRODUCT_NAME}}
+              </h2>
+
+              <!-- Price row -->
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 24px">
+                <tr>
+                  <td style="vertical-align: middle">
+                    <span class="price-current font-display" style="
+                          font-family:
+                            &quot;Cormorant Garamond&quot;, Georgia, serif;
+                          font-size: 30px;
+                          font-weight: 700;
+                          color: #6ee7b7;
+                        ">
+                      {{PRODUCT_PRICE}}
+                    </span>
+                  </td>
+                  <td style="vertical-align: middle; padding-left: 10px; font-size: 18px;">
+                    {{ORIGINAL_PRICE_HTML}}
+                  </td>
+                  <td style="vertical-align: middle; padding-left: 8px; font-size: 18px; ">
+                    {{DISCOUNT_PILL_HTML}}
+                  </td>
+                </tr>
+              </table>
+
+              <!-- AI copy block -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                style="margin-bottom: 28px">
+                <tr>
+                  <!-- Left border accent -->
+                  <td width="3" style="background-color: #10b95a; border-radius: 3px">
+                    &nbsp;
+                  </td>
+                  <td style="
+                        background-color: #0a2e18;
+                        padding: 18px 20px;
+                        border-radius: 0 12px 12px 0;
+                      ">
+                    <p style="
+                          font-family:
+                            &quot;Outfit&quot;, &quot;Helvetica Neue&quot;,
+                            Arial, sans-serif;
+                          font-size: 15px;
+                          color: #a7f3d0;
+                          line-height: 1.75;
+                          margin: 0;
+                          font-weight: 300;
+                        ">
+                      {{AI_COPY_BODY}}
+                    </p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Divider -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"
+                style="margin-bottom: 24px">
+                <tr>
+                  <td style="
+                        height: 1px;
+                        background-color: #0d3d20;
+                        font-size: 0;
+                        line-height: 0;
+                      ">
+                    &nbsp;
+                  </td>
+                </tr>
+              </table>
+
+              <!-- CTA Button -->
+              {{#if PRODUCT_URL}}
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td align="center">
+                    <a href="{{PRODUCT_URL}}" class="cta-btn" style="
+                          display: inline-block;
+                          background-color: #07422c;
+                          color: #ffffff !important;
+                          font-family:
+                            &quot;Outfit&quot;, &quot;Helvetica Neue&quot;,
+                            Arial, sans-serif;
+                          font-size: 13px;
+                          font-weight: 700;
+                          text-decoration: none;
+                          padding: 16px 48px;
+                          border-radius: 60px;
+                          letter-spacing: 2px;
+                          text-transform: uppercase;
+                          border: 1px solid #1a7a42;
+                          mso-padding-alt: 16px 48px;
+                        ">
+                      VIEW PRODUCT →
+                    </a>
+                  </td>
+                </tr>
+              </table>
+              {{/if}}
+            </td>
+          </tr>
+
+          <!-- ── FOOTER ── -->
+          <tr>
+            <td align="center" style="
+                  background-color: #03100a;
+                  padding: 20px 40px;
+                  border-top: 1px solid #0a2a14;
+                ">
+              <p style="
+                    font-family:
+                      &quot;Outfit&quot;, &quot;Helvetica Neue&quot;, Arial,
+                      sans-serif;
+                    font-size: 11px;
+                    color: #2a5c3a;
+                    line-height: 1.7;
+                    margin: 0;
+                  ">
+                You're receiving this because you browsed our store.<br />
+                <a href="{{UNSUBSCRIBE_URL}}" style="color: #3a7a50; text-decoration: none">Unsubscribe</a>
+                &nbsp;·&nbsp;
+                <a href="{{STORE_URL}}" style="color: #3a7a50; text-decoration: none">Visit Store</a>
+              </p>
+            </td>
+          </tr>
+        </table>
+        <!-- /CARD -->
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>
