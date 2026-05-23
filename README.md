@@ -55,8 +55,8 @@ Make sure you have accounts and API keys ready for:
 ### Step 1 — Clone the repository
 
 ```bash
-git clone https://github.com/your-username/email-automation-trigger.git
-cd email-automation-trigger
+git clone https://github.com/Elin-powS/Email-Automation-Using-Trigger.dev.git
+cd Email-Automation-Using-Trigger.dev
 ```
 
 ### Step 2 — Install dependencies
